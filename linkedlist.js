@@ -27,10 +27,14 @@ class ListNode {
     while(current.next){
         current =  current.next
     }
-    console.log(current)
+    
     current.next = node
    
    }
+  
+  console.log(lista3.add(10));
+  console.log(lista3.add(2));
+ console.log(lista3)
   
   function addTwoNumbers(l1, l2) {
     let num1=[]
@@ -65,4 +69,93 @@ class ListNode {
   const l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
   const resultado = addTwoNumbers(l1, l2);
   console.log(resultado); // Debería imprimir la lista resultante
+
+
+
+
+
+
+  //linked list no class
+
+  function LinkedList2 (){
+    this.head=null
+  }
+ 
+
+  function Node2(val){
+    this.value=val;
+    this.next = null;  
+  }
+
+  LinkedList2.prototype.add2= function(val){
+    var node = new Node2(val);
+    let current = this.head;
+    if(current===null){
+      this.head=node
+      return 
+    }
+    
+    while(current.next) {
+      current= current.next 
+    }
+    current.next= node
+  }
+
+  const myList2 = new LinkedList2()
+  console.log(myList2.add2(6));
+  console.log(myList2.add2(7));
+  console.log(myList2.add2(7))
+console.log(myList2)
+
+  function LinkedListDel (){
+    this.head= null;
+  }
+
+  function Node3 (val){
+    this.value=val;
+    this.next= null
+  }
+  LinkedListDel.prototype.add= function(val){
+    var node = new Node3(val);
+    let current = this.head;
+    if(current===null){
+      this.head=node
+      return 
+    }
+    
+    while(current.next) {
+      current= current.next 
+    }
+    current.next= node
+  }
+
+  LinkedListDel.prototype.delete= function(val){
+    
+    let current = this.head
+
+    if(!current){
+      console.log("empty list")
+      return
+    }
+    if(current.value===val){
+      this.head=null
+      return 
+    }
+    while(current.next&&current.next.value!==val){
+      current=current.next
+    }
+    if(current.next){
+      current.next=current.next.next
+    }
+    
+
+  }
+
+let myList = new LinkedListDel()
+myList.add(6)
+myList.add(14)
+myList.add(10)
+console.log(myList)
+myList.delete(14)
+console.log(myList)
   

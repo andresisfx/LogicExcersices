@@ -174,12 +174,49 @@ console.log(myList2)
       return null;
   }
   
+  
   return node+1;
   }
 
+  const verifyEven = (value)=>{
+    if(value%2===0){
+      return true
+    }else{
+      return false
+    }
+  }
+  LinkedListDel.prototype.search=function(val){
+    let current = this.head;
+    let indexNode=1
+    let resultMessage="value not found"
+    while(current){
+      if(typeof val!=="function"){
+        if(current.value===val){
+          
+          resultMessage=current.value+ ' was founded in node '+ (indexNode)
+         
+        }
+        
+        indexNode++
+       
+      }
+      if(typeof val=== 'function'){
+        if(val(current.value)){
+          resultMessage="the value in node "+indexNode+" is true"
+        }else{
+          resultMessage="the value in node "+indexNode+" is false"
+        }
+        indexNode++
+        }
+      
+      current=current.next
+    }
+    console.log(resultMessage)
+  }
+
 let myList = new LinkedListDel()
-myList.add(6)
-myList.add(14)
+myList.add(8)
+myList.add(121)
 myList.add(10)
 myList.add(5)
 myList.add(7)
@@ -188,5 +225,5 @@ myList.add(20)
 console.log(myList)
 myList.delete(14)
 console.log(myList)
-myList.search(20) 
+myList.search(verifyEven) 
 console.log(myList)

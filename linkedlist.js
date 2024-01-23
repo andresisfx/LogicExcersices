@@ -150,12 +150,43 @@ console.log(myList2)
     
 
   }
+  LinkedListDel.prototype.search=function(val){
+    let current = this.head;
+    let node= 1
+    if(this.head===null){
+      console.log("empty list")
+      return null
+    }
+    if(current.value===val){
+      console.log("value found in node 1")
+      return 1
+    }
+    while(current.next&&current.next.value!==val   ){
+     node++
+      current = current.next
+    }
+    console.log(node)
+    if (current.next) {
+      node++;
+      console.log("value found in node", node+1);// add 1 since we are in current node and the value is in current.next "next node"
+  } else {
+      console.log("value not found in the list");
+      return null;
+  }
+  
+  return node+1;
+  }
 
 let myList = new LinkedListDel()
 myList.add(6)
 myList.add(14)
 myList.add(10)
+myList.add(5)
+myList.add(7)
+myList.add(3)
+myList.add(20)
 console.log(myList)
 myList.delete(14)
 console.log(myList)
-  
+myList.search(20) 
+console.log(myList)

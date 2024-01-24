@@ -32,10 +32,20 @@
     }
     Hashtable.prototype.get=function(key){
       let index = this.hash(key)
+      if(!this.array[index])return "value not found"
       let valuesArr= this.array[index].map((arr)=>{if(arr[0]===key){return arr}})
       console.log(valuesArr)
       return valuesArr
      }
+
+   Hashtable.prototype.hashKey=function(key){
+      let index = this.hash(key);
+      if(!this.array[index])return console.log("value not found")
+      let comprove= this.array[index].map((el)=>{if(el[0]===key){return true}else{return false}})
+
+      console.log(comprove[0])
+      return comprove
+   }
     let myTable = new Hashtable();
 
  myTable.set("juliana",54)
@@ -45,6 +55,7 @@
  myTable.set("juliana",54)
  myTable.set("auan",52)
  myTable.set("juliana",542)
- myTable.get("juan")
+ myTable.get("juanmkkkn")
+ myTable.hashKey("juan")
  
- console.log(myTable)
+ console.log(myTable.hashKey("juliana"))

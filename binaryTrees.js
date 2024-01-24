@@ -20,13 +20,27 @@ function BinarySearchTree(value) {
     }
  
     BinarySearchTree.prototype.depthFirstForEach=function(cb,order){
-       //in order
-       if(order==="in order"){
+       //in-order left-root-rigth
+       //pre-order root-left-rigth
+       //post-order left-rigth-root
+       if(order==="in-order"){
           if(this.left&&this.left.depthFirstForEach(cb,order));
           cb(this.root)
           if(this.right&&this.left.depthFirstForEach(cb,order));
  
        }
+       if(order==="pre-order"){
+            cb(this.root)
+            if(this.left&&this.left.depthFirstForEach(cb,order));
+            if(this.right&&this.left.depthFirstForEach(cb,order));
+
+     }
+       if(order==="post-order"){
+            if(this.left&&this.left.depthFirstForEach(cb,order));
+            if(this.right&&this.left.depthFirstForEach(cb,order));
+            cb(this.root)
+
+     }
     }
  }
  let myTree = new BinarySearchTree(10)

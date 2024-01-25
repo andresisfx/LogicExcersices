@@ -43,13 +43,16 @@ function BinarySearchTree(value) {
      }
     }
     BinarySearchTree.prototype.size=function(){
-      if(this.left===null&&this.right===null)return 1;
-      if(this.left!==null&&this.right===null)return 1 +this.left.size();
-      if(this.left===null&&this.right!==null)return 1+this.right.size();
-      if(this.left!==null&&this.right!==null)return 1+this.right.size()+ this.left.size();
+      // if(this.left===null&&this.right===null)return 1;
+      // if(this.left!==null&&this.right===null)return 1 +this.left.size();
+      // if(this.left===null&&this.right!==null)return 1+this.right.size();
+      // if(this.left!==null&&this.right!==null)return 1+this.right.size()+ this.left.size();
 
-      
-   }
+      let counter=1
+      if(this.left) counter+= this.left.size();
+      if(this.right) counter += this.right.size();
+      return counter
+}
  
  let myTree = new BinarySearchTree(10)
  myTree.insert(8)

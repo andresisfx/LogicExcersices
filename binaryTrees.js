@@ -53,6 +53,16 @@ function BinarySearchTree(value) {
       if(this.right) counter += this.right.size();
       return counter
 }
+BinarySearchTree.prototype.contain=function(value){
+   if(this.value===value)return true
+   if(this.value<value){
+      if(!this.right)return false
+      return this.right.contain(value)
+   }else{
+      if(!this.left)return false
+      return this.left.contain(value)
+   }
+}
  
  let myTree = new BinarySearchTree(10)
  myTree.insert(8)

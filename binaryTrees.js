@@ -63,6 +63,18 @@ BinarySearchTree.prototype.contain=function(value){
       return this.left.contain(value)
    }
 }
+BinarySearchTree.prototype.breadthFirstForEach=function(cb,arr=[]){
+   if(this.left!==null){
+      arr.push(this.left)
+   }
+   if(this.right!==null){
+      arr.push(this.right)
+   }
+   cb(this.value)
+   if(arr.length>0){
+      arr.shift().breadthFirstForEach(cb,arr)
+   }
+}
  
  let myTree = new BinarySearchTree(10)
  myTree.insert(8)

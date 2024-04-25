@@ -65,3 +65,21 @@ function factorear(num) {
     return array
   }
   console.log("selectionsort here "+selectionSort([8,2,4,7,9,5]))
+
+  function insertionSort(array) {
+    // Implementar el método conocido como insertionSort para ordenar de menor a mayor
+    // el array recibido como parámetro utilizando arreglos
+    // Devolver el array ordenado resultante
+    // Tu código:
+    for (let i = 0; i < array.length; i++) {
+      let j = i-1
+      let aux = i
+      while (array[j]>aux) {
+        array[j+ 1]=array[j];
+        j--
+      }
+      array[j+1]=aux
+    }
+    return array
+  }
+  console.log("insertionsort here "+selectionSort([8,2,4,7,9,5]))

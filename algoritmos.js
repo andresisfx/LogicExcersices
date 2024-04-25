@@ -43,3 +43,25 @@ function factorear(num) {
   const arr = [5, 3, 8, 1, 2];
   console.log("Original array:", arr);
   console.log("sorted array with Bubble Sort:", bubbleSort(arr))
+ 
+  function selectionSort(array) {
+    // Implementar el método conocido como selectionSort para ordenar de menor a mayor
+    // el array recibido como parámetro utilizando dos arreglos
+    // Devolver el array ordenado resultante
+    // Tu código:
+    
+    for (let i = 0; i < array.length; i++) {            // [8,2,4,7,9,5]
+      let min=i                                         //  i
+      for (let j = i+1; j < array.length; j++) {        //    j
+        if(array[j]<array[min]){ 
+          //    m 
+          min=j
+        }
+      }
+      let aux = array[i]
+      array[i]=array[min];
+      array[min] = aux
+    }
+    return array
+  }
+  console.log("selectionsort here "+selectionSort([8,2,4,7,9,5]))

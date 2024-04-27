@@ -71,15 +71,16 @@ function factorear(num) {
     // el array recibido como parámetro utilizando arreglos
     // Devolver el array ordenado resultante
     // Tu código:
-    for (let i = 0; i < array.length; i++) {
-      let j = i-1
-      let aux = i
-      while (array[j]>aux) {
-        array[j+ 1]=array[j];
+                                                        //  0 1 2 3 4 5 
+   for (let i = 0; i < array.length; i++) {
+    let j=i-1;
+    let aux = array[i]
+     while (array[j]>aux) {
+        array[j+1]=array[j];
         j--
-      }
-      array[j+1]=aux
-    }
-    return array
+     }
+    array[j+1]=aux
   }
-  console.log("insertionsort here "+selectionSort([8,2,4,7,9,5]))
+  return array
+  }
+  console.log("insertionsort here "+insertionSort([8,2,4,7,9,5]));

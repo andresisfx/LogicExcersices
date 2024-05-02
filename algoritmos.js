@@ -114,3 +114,30 @@ function factorear(num) {
   return quickSort(left).concat(equals).concat(quickSort(right))
   }
   console.log("Quicksort here "+quickSort([6,5,2,3,7,9,1]))
+
+  function mergeSort(array) {
+    // Implementar el método conocido como mergeSort para ordenar de menor a mayor
+    // el array recibido como parámetro
+    // Devolver el array ordenado resultante
+    // Tu código:
+   if(array.length<2)return array
+   let mid = Math.floor(array.length/2)
+   let left=array.slice(0,mid)
+   let right = array.slice(mid,array.length)
+  
+   array=[]
+  
+   left = mergeSort(left);
+   right=mergeSort(right);
+  
+   while (right.length&&left.length) {
+    if(left[0]<right[0]){
+      array.push(left.shift())
+    }else {
+      array.push(right.shift())
+    }
+   }
+   return array.concat(left,right)
+  }
+  console.log("mergesort here "+mergeSort([6,5,2,3,7,9,1]))
+  

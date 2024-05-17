@@ -19,7 +19,7 @@ function factorear(num) {
     }  
    console.log(factorear(180))
 
-   function bubbleSort(arr) {
+   function bubbleSort(array) {
     // Implementar el método conocido como bubbleSort para ordenar de menor a mayor
     // el array recibido como parámetro
     // Devolver el array ordenado resultante
@@ -39,6 +39,7 @@ function factorear(num) {
     
    }
     return arr
+ 
   }
   const arr = [5, 3, 8, 1, 2];
   console.log("Original array:", arr);
@@ -112,6 +113,7 @@ function factorear(num) {
     }
   
   return quickSort(left).concat(equals).concat(quickSort(right))
+
   }
   console.log("Quicksort here "+quickSort([6,5,2,3,7,9,1]))
 

@@ -36,3 +36,25 @@ function findIndex(arr,target){
 }
 
 console.log(findIndex([1,6,2,3,7],9))
+
+
+// Encontrar si el string es valido segun si es correspondiente con su mismo simbolo (){}[]
+// no puede estar (},[).... o un termino solo (),{},[....
+
+function verifyString(s){
+  if(s.length%2!==0)return false
+
+  let stack = [];
+  const mapping={')':'(','}':'{',']':'['}
+  for (const char of s) {
+     if(mapping[char]){
+      if(stack.pop()!==mapping[char])return false
+     }else{
+      stack.push(char)
+     }
+  }
+  return stack.length===0;
+}
+
+console.log(verifyString("(",")"))
+

@@ -58,3 +58,63 @@ function verifyString(s){
 
 console.log(verifyString("(",")"))
 
+/*21. Fusionar dos listas ordenadas
+Fácil
+Temas
+Compañías
+Se le proporcionan los encabezados de dos listas vinculadas ordenadas list1y list2.
+
+Combine las dos listas en una lista ordenada . La lista debe hacerse empalmando los nodos de las dos primeras listas.
+
+Devuelve el encabezado de la lista enlazada fusionada .
+
+ 
+
+Ejemplo 1:
+
+
+Entrada: lista1 = [1,2,4], lista2 = [1,3,4]
+ Salida: [1,1,2,3,4,4]
+Ejemplo 2:
+
+Entrada: lista1 = [], lista2 = []
+ Salida: []
+Ejemplo 3:
+
+Entrada: lista1 = [], lista2 = [0]
+ Salida: [0]
+ 
+
+Restricciones:
+
+El número de nodos en ambas listas está en el rango [0, 50].
+-100 <= Node.val <= 100
+Ambos list1y list2están ordenados en orden no decreciente .*/
+
+
+ function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+     this.next = (next===undefined ? null : next)
+
+
+var mergeTwoLists = function(list1, list2) {
+    let temp=new ListNode();
+    let tail = temp
+    while(list1!==null&&list2!==null){
+        if(list1.val<list2.val){
+            tail.next=list1
+            list1=list1.next
+        }else{
+            tail.next=list2
+            list2=list2.next
+        }
+        tail=tail.next
+    }
+    if(list1!==null){
+        tail.next=list1
+    }else if(list2!==null){
+        tail.next=list2
+        }
+        return temp.next
+};
+ }

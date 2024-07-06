@@ -184,3 +184,54 @@ var isSameTree = function(p, q) {
  
     return isSameTree(p.left,q.left)&&isSameTree(p.right,q.right)
  };  
+
+ /** 572
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} subRoot
+ * @return {boolean}
+ */
+var isSubtree = function(root, subRoot) {
+    function isSameTree(s,t){
+       if(!s&&!t)return true;
+       if(!s||!t)return false;
+       if(s.val!==t.val)return false;
+       return isSameTree(s.left,t.left)&& isSameTree(s.right,t.right);
+    }
+    if(!root)return false;
+    if(isSameTree(root,subRoot))return true;
+    return isSubtree(root.left,subRoot)|| isSubtree(root.right,subRoot);
+   
+   };
+
+   /** 141
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var hasCycle = function(head) {
+    if(!head || !head.next)return false;
+    let slow=head;
+    let fast=head;
+    while(fast&&fast.next){
+      slow=slow.next;
+      fast=fast.next.next
+      if(slow===fast)return true
+    }
+    return false;
+  
+  };

@@ -18,3 +18,22 @@ var groupAnagrams = function(strs) {
     }
     return Object.values(res)
 };
+
+
+/** 347
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+    const freq=new Map();
+    for(let i=0;i<nums.length;i++){
+        if(!freq.has(nums[i])){
+            freq.set(nums[i],0)
+        }
+        freq.set(nums[i],freq.get(nums[i])+1)
+    }
+    const sortedArray=Array.from(freq).sort((a,b)=>b[1]-a[1])
+    console.log(sortedArray )
+    return sortedArray.slice(0,k).map(pair=>pair[0])
+};

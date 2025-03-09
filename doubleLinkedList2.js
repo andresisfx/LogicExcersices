@@ -113,6 +113,59 @@ class  Nodo {
 
      }
 
+     removeItemByposition(position){
+       if(position<0||position>this.length){
+           console.log("removeItemByPosition: posicion fuera de rango")
+           return null
+       }
+            let current=this.head;
+            for(let i=1;i<position;i++){
+                current=current.next
+            }
+            if(current.prev)current.prev.next=current.next;
+            if(current.next)current.next.prev=current.prev;
+            if(current===this.head)this.head=current.next;
+            if(current===this.tail)this.tail=current.prev;
+            this.length--;
+            console.log(`Ejecutando -->removeItemByPosition:  elemento ${current.value} eliminado de la posicion ${position}`)
+            console.log(`la lista actualizada es:  ${this.printElemnts()}`)
+       };
+
+       concatenateLists(list2){
+           if(!list2.head){
+            console.log(`Ejecutando concatenateLists: la lista ${list2} esta vacia`)
+            return
+           }
+           if(!this.head){
+            this.head=list2.head;
+            this.tail=list2.tail;
+            this.length=list2.length;
+           }else{
+            this.tail.next=list2.head; 
+            list2.head.prev=this.tail;
+            this.tail=list2.tail;
+            this.length+=list2.length;
+           }
+           console.log(`Ejecutando concatenateLists: la lista actualizada es:  ${this.printElemnts()}`)
+       }
+       replaceElment(position,element){
+           if(position<0||position>this.length){
+               console.log("replaceElment: posicion fuera de rango")
+               return null
+           }
+           let current=this.head;
+           for(let i =1;i<position;i++){
+               current=current.next
+           }
+           current.value=element
+           console.log(`Ejecutando replaceElment:  elemento ${current.value} reemplazado de la posicion ${position}`)
+           console.log(`Ejecutando replaceElment:  la lista actualizada es:  ${this.printElemnts()}`)
+           
+       }
+
+
+
+
  
  }
 
@@ -124,5 +177,19 @@ class  Nodo {
  list.insert(4);
  list.insert(5);
  list.printElemnts();
+ list.replaceElment(3,2000000000);
+ list.printElemnts();
  list.count();
  list.removeElement(12);
+ list.removeItemByposition(1);
+
+ const list2 = new DoubleLinkedList();
+ list2.insert(6);
+ list2.insert(7);
+ list2.insert(8);
+ list2.insert(9);
+ list2.insert(10);
+ list2.printElemnts();
+ list2.count();
+ list.replaceElment(2,1200000000);
+ list.concatenateLists(list2);

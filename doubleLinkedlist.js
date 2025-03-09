@@ -135,3 +135,5 @@ lista1.concatenar(lista2);
 lista1.imprimir(); // A <-> C <-> X <-> Y <-> null
 lista1.reemplazar(2, "Z");
 lista1.imprimir(); // A <-> C <-> Z <-> Y <-> null
+console.log("Eliminando el elemento en la posición 2: ", lista1.eliminarEnPosicion(2));
+lista1.imprimir(); 

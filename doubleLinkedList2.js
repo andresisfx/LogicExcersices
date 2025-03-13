@@ -193,3 +193,4 @@ class  Nodo {
  list2.count();
  list.replaceElment(2,1200000000);
  list.concatenateLists(list2);
+console.log(list)

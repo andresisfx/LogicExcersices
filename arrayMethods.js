@@ -108,3 +108,169 @@ const verifyPositive=(nums)=>{
    return nums.every(num=>num>0)
 }
 console.log("verificando si todos son positivos:  ",verifyPositive(numbers3))
+
+
+//?------------------------------------------find()-------------------------------------
+
+//TODO Ejersicio 1
+//* Tienes un array de números. Usa .find() para encontrar el primer número negativo en el array.
+
+//* Datos de Entrada:
+
+const numbers4 = [1, -3, -5, 2, -7, 9];
+
+const findFirstNegative=(numbers)=>{
+ return numbers.find(num=>num<0)
+}
+console.log("el primer numero negativo es: ",findFirstNegative(numbers4))
+
+//TODO Ejercicio 2: Encontrar el primer usuario mayor de 30 años
+//* Enunciado:
+// *Tienes un array de objetos que representan usuarios. Cada usuario tiene un nombre y una edad. Usa .find() para encontrar el primer usuario que tenga más de 30 años.
+
+//* Datos de Entrada:
+
+const users2 = [
+    { name: "Juan", age: 25 },
+    { name: "Ana", age: 35 },
+    { name: "Carlos", age: 22 },
+    { name: "Luisa", age: 40 }
+];
+
+const findMayor30=(users)=>{
+   return users.find(user=>user.age>30).age
+}
+console.log("el priemr usuario mayor de 30 años es:  ",findMayor30(users2))
+
+
+//?-------------------------------------includes()---------------------------------
+
+// TODO Ejercicio 1: Verificar si un número está en el array
+//* Enunciado:
+// *Tienes un array de números. Usa .includes() para verificar si el número 5 está en el array.
+
+// *Datos de Entrada:
+
+const numbers5 = [1, 3, 8, 7, 9];
+
+const includesFive=(numbers)=>{
+   return numbers.includes(5)
+}
+
+console.log("verificando con includes si existe 5: ", includesFive(numbers5))
+
+//?-----------------------------------------slice()------------------------------------
+
+//TODO Ejercicio 1: Extraer una sublista de números
+//* Enunciado:
+// *Tienes un array de números. Usa .slice() para extraer una sublista que contenga los elementos desde la posición 0 hasta la posición 2 (sin incluir la posición 2).
+
+// *Datos de Entrada:
+
+const numbers6 = [10, 20, 30, 40, 50];
+
+const sliceNumbers=(numbers)=>{
+   return numbers.slice(0,2) //! no incluye la posición 2 
+}
+
+console.log("lista recortada con slice: ",sliceNumbers(numbers6))
+
+//TODO Ejercicio 2: Extraer los últimos 3 elementos de un array
+// *Enunciado:
+//* Tienes un array de nombres. Usa .slice() para extraer los últimos 3 elementos del array.
+
+// *Datos de Entrada:
+
+
+const names = ["Juan", "Ana", "Carlos", "Luisa", "Pedro", "María"];
+
+const extracThreeLastNames=(names)=>{
+  return names.slice(names.length-3,names.length)
+ //! return names.slice(-3);//  tambien se puede Usar índices negativos para extraer los últimos 3 elementos , de esta forma el método cuenta desde el final del array al inicio
+}
+
+console.log("los 3 últimos nombres extraidos con slice son: ",extracThreeLastNames(names))
+
+//?--------------------------------------splice()------------------------------------------
+
+// *Sintaxis de .splice()
+
+// *array.splice(start, deleteCount, item1, item2, ...);
+// *Parámetros:
+// *start: La posición en el array donde comenzará la modificación.
+
+//* Si es positivo, cuenta desde el inicio del array.
+
+// *Si es negativo, cuenta desde el final del array.
+
+// *deleteCount: El número de elementos a eliminar desde la posición start.
+
+// *Si es 0, no se elimina ningún elemento.
+
+//* Si no se proporciona, se eliminan todos los elementos desde start hasta el final.
+
+// *item1, item2, ...: Elementos que se añadirán al array en la posición start.
+
+//TODO Ejercicio 1: Eliminar y Reemplazar Elementos
+// *Enunciado:
+// *Tienes un array de nombres. Usa .splice() para:
+
+//* Eliminar 2 nombres a partir de la posición 1.
+
+// *Añadir los nombres "Luisa" y "Pedro" en esa misma posición.
+
+//* Datos de Entrada:
+
+const names2 = ["Juan", "Ana", "Carlos", "María"];
+
+const removeAnsReplaceElements=(names)=>{
+  return names.splice(2,2,"Luisa","Pedro")//!retorna los elementos que eliminó, NO RETORNA EL ARRAY
+}
+console.log("nombres eliminados con splice: ",removeAnsReplaceElements(names2))
+console.log("nombres nuevos reemplazados con splice: ",names2)
+
+//TODO Ejercicio 2: Añadir Elementos sin Eliminar
+//* Enunciado:
+// *Tienes un array de números. Usa .splice() para:
+
+// *Añadir los números 10 y 20 en la posición 2.
+
+// *No eliminar ningún elemento.
+
+// *Datos de Entrada:
+
+const numbers7 = [1, 2, 3, 4];
+const replaceNums=(nums)=>{
+  nums.splice(1,0,10,20)//!el resultado será [ 1, 10, 20, 2, 3, 4 ] porque se cuenta a partir de la posición que se declara en este caso posición (1)
+}
+replaceNums(numbers7)
+
+console.log("Array actualizado despues de añadir números con splice: ",numbers7)
+
+
+
+
+
+//?--------------------------------------------concat()-----------------------------------
+
+//TODO Bonus: Ejercicio Adicional
+//* Enunciado:
+//* Tienes cuatro arrays: uno de nombres, uno de edades, uno de países y uno de profesiones. Combínalos en un solo array, asegurándote de que el orden sea: array2, array4, array1, array3.
+
+// *Datos de Entrada:
+
+const array1 = ["Juan", "Ana"];
+const array2 = [25, 30];
+const array3 = ["México", "España"];
+const array4 = ["Ingeniero", "Doctor"];
+
+//*Resultado Esperado:
+
+//*El array combinado es: [25, 30, "Ingeniero", "Doctor", "Juan", "Ana", "México", "España"]
+
+const concatenatedArray= array2.concat(array4,array1,array3)
+console.log("el array concatenado es :   ",concatenatedArray)
+
+const concatenatedWithSpreadOperator= [...array1,...array2,...array3,...array4]
+
+console.log("array concatenado con spread operator: ",concatenatedWithSpreadOperator)

@@ -274,3 +274,132 @@ console.log("el array concatenado es :   ",concatenatedArray)
 const concatenatedWithSpreadOperator= [...array1,...array2,...array3,...array4]
 
 console.log("array concatenado con spread operator: ",concatenatedWithSpreadOperator)
+
+//?----------------------------------------sort()------------------------------------------
+
+//* ¿Cómo funciona .sort()?
+//* El método .sort() se utiliza para ordenar los elementos de un array. Por defecto, convierte los elementos a strings y los ordena alfabéticamente (según su valor Unicode). Sin embargo, para ordenar números u otros tipos de datos, es necesario proporcionar una función de comparación.
+
+//* Sintaxis:
+
+//!array.sort([compareFunction]);
+//* Parámetros:
+//* compareFunction (opcional): Una función que define el orden de clasificación.
+
+//* Si no se proporciona, los elementos se convierten a strings y se ordenan alfabéticamente.
+
+//* Si se proporciona, debe devolver:
+
+//* Un número negativo si a debe ir antes que b.
+
+//* Cero si a y b son iguales.
+
+//* Un número positivo si a debe ir después que b.
+
+//* Ejemplo básico:
+//* javascript
+//* Copy
+const numbers8 = [3, 1, 4, 2];
+
+//* Ordenar de menor a mayor
+const sorted = numbers.sort((a, b) => a - b);
+
+console.log(sorted); // [1, 2, 3, 4]
+
+// TODO  Ejercicio 1: Ordenar un array de objetos
+//* Enunciado:
+// *Tienes un array de objetos que representan productos. Cada producto tiene un nombre y un precio. Ordena el array de productos de menor a mayor según su precio.
+
+//* Datos de Entrada:
+
+const products = [
+    { name: "Camisa", price: 20 },
+    { name: "Pantalón", price: 40 },
+    { name: "Zapatos", price: 50 },
+    { name: "Gorra", price: 10 }
+];
+//*Resultado Esperado:
+
+[
+    { name: "Gorra", price: 10 },
+    { name: "Camisa", price: 20 },
+    { name: "Pantalón", price: 40 },
+    { name: "Zapatos", price: 50 }
+]
+
+const orderedProducts= products.sort((a,b)=>a.price-b.price)
+const orderedfromEndToStart= products.sort((a,b)=>b.price-a.price)
+console.log("productos ordenados con sort de menor a mayor: ",orderedProducts)
+console.log("productos ordenados con sort de MAYOR a MENOR: ",orderedfromEndToStart)
+
+//?------------------------------------------reverse()-------------------------------------
+
+
+//TODO  Ejercicio: Invertir un array de objetos y filtrar elementos
+//* Enunciado:
+//* Tienes un array de objetos que representan tareas. Cada tarea tiene un id, un nombre y un completado (booleano que indica si la tarea está completada o no). Tu tarea es:
+
+//* Invertir el orden del array de tareas.
+
+//* Filtrar y mostrar solo las tareas que no están completadas.
+
+//* Crear una función que realice estas operaciones y devuelva el resultado.
+
+//* Datos de Entrada:
+
+const tasks = [
+    { id: 1, name: "Comprar pan", completed: true },
+    { id: 2, name: "Hacer ejercicio", completed: false },
+    { id: 3, name: "Llamar al médico", completed: false },
+    { id: 4, name: "Estudiar JavaScript", completed: true },
+    { id: 5, name: "Pasear al perro", completed: false }
+];
+//*Resultado Esperado:
+
+[
+    { id: 5, name: "Pasear al perro", completed: false },
+    { id: 3, name: "Llamar al médico", completed: false },
+    { id: 2, name: "Hacer ejercicio", completed: false }
+]
+
+const reverseAndFilterTasks=(tasks)=>{
+   return tasks.filter(task=>task.completed===false).reverse()
+}
+
+
+console.log("tareas sin filtrar:  ", tasks)
+const filteredTasks=reverseAndFilterTasks(tasks);
+console.log("tareas filtradas e invertidas:  ",filteredTasks)
+
+
+//?-----------------------------------------findIndex()-------------------------------------
+//TODO Ejercicio: Encontrar el índice del primer número primo en un array
+//* Enunciado:
+//* Tienes un array de números. Tu tarea es:
+
+//* Encontrar el índice del primer número primo en el array.
+
+//* Si no hay números primos en el array, devolver -1.
+
+// *Crear una función que realice esta operación y devuelva el resultado.
+
+//* Datos de Entrada:
+
+
+const numbers9 = [16, 6, 8, 9, 10, 11, 12];
+// *Resultado Esperado:
+
+//* El índice del primer número primo es: 5
+
+const isPrime=(num)=>{
+  if(num<= 1)return false
+  for(let i=2;i<=Math.sqrt(num);i++){//! tiene que ser meno o IGUAL a la raiz
+    if(num%i===0)return false
+  }
+  return true
+}
+
+const findIndexofFirstPrime=(nums)=>{
+  return nums.findIndex((num)=>isPrime(num))
+}
+console.log("el primer número primo encontrado es : ",findIndexofFirstPrime(numbers9))

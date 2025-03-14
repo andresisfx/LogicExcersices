@@ -403,3 +403,113 @@ const findIndexofFirstPrime=(nums)=>{
   return nums.findIndex((num)=>isPrime(num))
 }
 console.log("el primer número primo encontrado es : ",findIndexofFirstPrime(numbers9))
+
+
+//?-------------------------------------------flat()-------------------------------------
+
+
+//!Necesitas especificar el nivel de aplanamiento (por ejemplo, .flat(1) o .flat(Infinity)).
+//! si no se coloca ninguna especificación solo aplana el primer nivel de anidación
+// TODOEjercicio: Aplanar un array anidado y filtrar elementos
+//** Enunciado:
+//* Tienes un array anidado que contiene números y subarrays. Tu tarea es:
+
+// *Aplanar el array completamente (es decir, convertir todos los subarrays en elementos individuales).
+
+//* Filtrar y mostrar solo los números pares.
+
+//* Crear una función que realice estas operaciones y devuelva el resultado.
+
+//* Datos de Entrada:
+
+const nestedArray = [1, [2, [3, [4, [5]]]], [6, [7, [8]]], 9];
+// Resultado Esperado:
+
+//*[2, 4, 6, 8]
+
+const flatAndOrder=(nestedArray)=>{
+    let flatArray= nestedArray.flat(Infinity)//!usar Infinity para aplanar arrays anidados
+    const onlyPairs= flatArray.filter((num)=>num%2===0);
+    return onlyPairs;
+}
+
+console.log("array aplanado con flat: ",flatAndOrder(nestedArray))
+
+//?----------------------------------------flatMap()-----------------------------------
+
+//* Ejemplo Básico:
+
+//* const numbers500 = [1, 2, 3, 4];
+
+///* const flatMapped = numbers500.flatMap(num => [num, num * 2]);
+
+// **console.log(flatMapped); // [1, 2, 2, 4, 3, 6, 4, 8]
+// *¿Qué hace este código?
+// *Mapeo: Para cada número, devuelve un array con el número y su doble: [num, num * 2].
+
+// *Aplanamiento: .flatMap() aplana automáticamente el resultado en un solo array.
+
+
+// TODO Ejercicio : Transformar y Aplanar un Array de Objetos
+// *Enunciado:
+// *Tienes un array de objetos que representan estudiantes. Cada estudiante tiene un nombre y un array de notas. Tu tarea es:
+
+// *Transformar cada estudiante en un array de objetos que contengan el nombre y cada una de sus notas.
+
+//* Aplanar el resultado en un solo array.
+
+//* Filtrar solo los objetos donde la nota sea mayor o igual a 7.
+
+//* Datos de Entrada:
+
+const students = [
+    { name: "Juan", grades: [5, 8, 7] },
+    { name: "Ana", grades: [9, 6, 8] },
+    { name: "Carlos", grades: [4, 7, 10] }
+];
+//*Resultado Esperado:
+
+[
+    { name: "Juan", grade: 8 },
+    { name: "Juan", grade: 7 },
+    { name: "Ana", grade: 9 },
+    { name: "Ana", grade: 8 },
+    { name: "Carlos", grade: 7 },
+    { name: "Carlos", grade: 10 }
+]
+
+const mapAndFlat=(students)=>{
+   return students.flatMap((student)=>{
+   const filterGrades=  student.grades.filter(grade=>grade>=7)
+   const individualNotes= filterGrades.map((grad)=>{
+    return {name:student.name,grade:grad}
+  })
+   return individualNotes
+  })
+}
+
+console.log("las notas separadas por cada estudiante mayores o iguales a 7 son: ",mapAndFlat(students))
+
+
+//TODO Ejercicio Adicional
+// *Enunciado:
+// *Tienes un array de frases. Cada frase es un string con varias palabras. Usa .flatMap() para:
+
+//* Dividir cada frase en palabras individuales.
+
+// *Aplanar el resultado en un solo array de palabras.
+
+//* Filtrar solo las palabras que tienen más de 3 letras.
+
+// *Datos de Entrada:
+
+const phrases = ["Hola mundo", "JavaScript es genial", "Aprende programación"];
+//*Resultado Esperado:
+
+["Hola", "mundo", "JavaScript", "genial", "Aprende", "programación"]
+
+
+const separateWords=(phrases)=>{
+  return phrases.flatMap(phrase=>phrase.split(" "))
+}
+console.log("Frases convertidas en un string por cada palabra: ",separateWords(phrases))

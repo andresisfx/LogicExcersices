@@ -169,3 +169,6 @@ const found = numbers2.find(num => num > 2); // 3
 const element = document.querySelector("#id");
 element.textContent = "Nuevo texto";
 element.addEventListener("click", () => console.log("Clickeado"));
+
+
+

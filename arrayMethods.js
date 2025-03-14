@@ -61,3 +61,50 @@ const printSquareNums= ()=>{
 calculateSquare(numbers)
 printSquareNums()
 
+//?---------------------------------------some()------------------------------------------
+
+//* este método verifica si almenos un elemento cumple la condicion
+
+// *Tienes un array de números. Usa .some() para verificar si hay al menos un número negativo en el array.
+
+//* Datos de Entrada:
+
+
+const nums = [1, 3, 5, -2, 7, 9];
+
+const verifyNegativeNum=(numbers)=>{
+  return numbers.some(num=>num<0)
+}
+console.log("verificando si hay negativos: ", verifyNegativeNum(nums))
+
+// TODO Ejercicio 2: Verificar si hay usuarios menores de edad
+//* Enunciado:
+//* Tienes un array de objetos que representan usuarios. Cada usuario tiene un nombre y una edad. Usa .some() para verificar si hay al menos un usuario menor de 18 años.
+
+//* Datos de Entrada:
+
+const users = [
+    { name: "Juan", age: 25 },
+    { name: "Ana", age: 27 },
+    { name: "Carlos", age: 22 },
+    { name: "Luisa", age: 19 }
+];
+
+const verifyMinor=(users)=>{
+  return users.some(user=>user.age<18)
+}
+console.log("verificando si hay menores de edad:  ",verifyMinor(users))
+
+//?---------------------------------------every()------------------------------------------
+// TODO Ejercicio 1: Verificar si todos los números son positivos
+//* Enunciado:
+// *Tienes un array de números. Usa .every() para verificar si todos los números en el array son positivos (mayores que 0).
+
+// *Datos de Entrada:
+
+const numbers3 = [2, 4, 6, 8, 10];
+
+const verifyPositive=(nums)=>{
+   return nums.every(num=>num>0)
+}
+console.log("verificando si todos son positivos:  ",verifyPositive(numbers3))

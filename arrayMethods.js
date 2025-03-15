@@ -479,13 +479,12 @@ const students = [
 ]
 
 const mapAndFlat=(students)=>{
-   return students.flatMap((student)=>{
-   const filterGrades=  student.grades.filter(grade=>grade>=7)
-   const individualNotes= filterGrades.map((grad)=>{
-    return {name:student.name,grade:grad}
-  })
-   return individualNotes
-  })
+   return students.flatMap((student)=>
+                  student.grades
+                 .filter(grade=>grade>=7)
+                 .map(grade=>({name:student.name,grade}))
+  
+  )
 }
 
 console.log("las notas separadas por cada estudiante mayores o iguales a 7 son: ",mapAndFlat(students))

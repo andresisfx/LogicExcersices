@@ -117,7 +117,7 @@ console.log("productos en un solo string",joinStrings(productos))
 // *No modifica el string original: Es un método de solo lectura.
 
 
-//* Ejercicio Difícil: Verificar Palíndromos con .includes()
+//TODO Ejercicio : Verificar Palíndromos con .includes()
 // *Enunciado:
 // *Un palíndromo es una palabra, frase o secuencia que se lee igual de izquierda a derecha que de derecha a izquierda (ignorando espacios, signos de puntuación y mayúsculas/minúsculas). Tu tarea es:
 
@@ -169,3 +169,59 @@ console.log("Resultado frase 2: ", verifyIfPalindrom(frase2))
 console.log("\n //////////////-----------//////////////////")
 
 console.log("Resultado frase 3:  ", verifyIfPalindrom(frase3))
+
+
+//?------------------------------slice()-----------------------------------------------
+
+//* ¿Qué es .slice()?
+//* El método .slice() se utiliza para extraer una porción de un string (o un array) y devolverla como un nuevo string (o array). No modifica el string original.
+
+//* Sintaxis:
+
+//! string.slice(inicio, fin);
+// *inicio: La posición inicial desde donde comenzar a extraer (incluida).
+
+//* fin: La posición final hasta donde extraer (no incluida). Si se omite, extrae hasta el final del string.
+
+// *Características:
+//* Índices positivos: Cuentan desde el inicio del string (el primer carácter es 0).
+
+//* Índices negativos: Cuentan desde el final del string (el último carácter es -1).
+
+// *No modifica el string original: Devuelve un nuevo string.
+
+//TODO Ejercicio: Extraer y Formatear Información de un Texto
+// *Enunciado:
+//* Tienes un texto que contiene información sobre varios productos en el siguiente formato:
+
+
+// *"ID:123-Nombre:Camisa-Precio:20;ID:456-Nombre:Pantalón-Precio:40;ID:789-Nombre:Zapatos-Precio:50"
+//* Tu tarea es:
+
+// *Dividir el texto en productos individuales usando el separador ;.
+
+//* Para cada producto, extraer el ID, el Nombre y el Precio usando .slice().
+
+//* Formatear cada producto en un string con el formato: "<Nombre> (ID: <ID>) - <Precio>€".
+
+//* Unir todos los productos formateados en un solo string, separados por saltos de línea (\n).
+
+//* Datos de Entrada:
+
+const text2 = "ID:123-Nombre:Camisa-Precio:20;ID:456-Nombre:Pantalón-Precio:40;ID:789-Nombre:Zapatos-Precio:50";
+//* Resultado Esperado:
+
+// *"Camisa (ID: 123) - 20€
+//* Pantalón (ID: 456) - 40€
+//* Zapatos (ID: 789) - 50€"
+
+const extractAndFormatText=(text)=>{
+   return splitText=text.split(";").map((str)=>{
+         return `${str.split("-")[1].slice(7)}  (ID: ${str.split("-")[0].slice(3)}) - ${str.split("-")[2].slice(7)}$`
+    }).join("\n")
+   
+
+}
+
+console.log("------------------------------------Método slice()---------------------------")
+console.log("Información extraida: \n", extractAndFormatText(text2))

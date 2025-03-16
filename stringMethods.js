@@ -216,7 +216,7 @@ const text2 = "ID:123-Nombre:Camisa-Precio:20;ID:456-Nombre:Pantalón-Precio:40;
 //* Zapatos (ID: 789) - 50€"
 
 const extractAndFormatText=(text)=>{
-   return splitText=text.split(";").map((str)=>{
+   return text.split(";").map((str)=>{
          return `${str.split("-")[1].slice(7)}  (ID: ${str.split("-")[0].slice(3)}) - ${str.split("-")[2].slice(7)}$`
     }).join("\n")
    
@@ -225,3 +225,32 @@ const extractAndFormatText=(text)=>{
 
 console.log("------------------------------------Método slice()---------------------------")
 console.log("Información extraida: \n", extractAndFormatText(text2))
+
+
+//?--------------------------------------substring()---------------------------------------
+//* substring no acpta indices negativos
+//* a diferencia de slice ,substring no devuelve un string vacio si recibe el primer indice mayor que el segundo => text.substring(5,0); en lugar de esto substring los invierte así => text.substring(0,5)
+
+//TODO Ejercicio : Extraer y Formatear Fechas
+//* Enunciado:
+//* Tienes un string que contiene varias fechas en el formato DD/MM/AAAA. Tu tarea es:
+
+//* Extraer cada fecha del string.
+
+//* Formatear cada fecha en el formato AAAA-MM-DD.
+
+//* Unir las fechas formateadas en un solo string, separadas por comas.
+
+//* Datos de Entrada:
+
+const text3 = "Evento1: 12/05/2023; Evento2: 23/09/2023; Evento3: 01/01/2024";
+//* Resultado Esperado:
+
+//* "2023-05-12, 2023-09-23, 2024-01-01"
+
+const formatDates=(text)=>{
+  return text.split(";").map(str=>str.trim()).map(str=>`${str.substring(15)}-${str.substring(12,14)}-${str.substring(9,11)}`).join(", ")
+}
+
+console.log("----------------------------------------Método substring()------------------------------")
+console.log("Fechas formateadas con substring: \n",formatDates(text3))

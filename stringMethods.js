@@ -249,7 +249,7 @@ const text3 = "Evento1: 12/05/2023; Evento2: 23/09/2023; Evento3: 01/01/2024";
 //* "2023-05-12, 2023-09-23, 2024-01-01"
 
 const formatDates=(text)=>{
-  return text.split(";").map(str=>str.trim()).map(str=>`${str.substring(15)}-${str.substring(12,14)}-${str.substring(9,11)}`).join(", ")
+  return text.split(";").map(str=>str.trim()).map(str=>`${str.substring(str.indexOf("/")+4)}-${str.substring(str.indexOf("/")+1,str.indexOf("/")+3)}-${str.substring(str.indexOf("/")-2,str.indexOf("/"))}`).join(", ")
 }
 
 console.log("----------------------------------------Método substring()------------------------------")

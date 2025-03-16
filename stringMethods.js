@@ -100,3 +100,72 @@ console.log("//----------------------------- Metodo join()----------------------
 console.log("Productos originales:  ",productos)
 console.log("productos en un solo string",joinStrings(productos))
 
+
+
+//?-------------------------------includes(caden,posicionInicio)--------------------------
+
+// *string.includes(subcadena, posicionInicio);
+// *subcadena: La cadena de texto que deseas buscar.
+
+//* posicionInicio (opcional): La posición en el string desde donde comenzar la búsqueda. Por defecto es 0.
+
+// *Características:
+// *Distingue entre mayúsculas y minúsculas: "Hola" no es lo mismo que "hola".
+
+//* Devuelve un booleano: true si la subcadena existe, false si no.
+
+// *No modifica el string original: Es un método de solo lectura.
+
+
+//* Ejercicio Difícil: Verificar Palíndromos con .includes()
+// *Enunciado:
+// *Un palíndromo es una palabra, frase o secuencia que se lee igual de izquierda a derecha que de derecha a izquierda (ignorando espacios, signos de puntuación y mayúsculas/minúsculas). Tu tarea es:
+
+// *Crear una función que verifique si una frase es un palíndromo.
+
+//* Usar el método .includes() para verificar si la frase contiene alguna palabra prohibida (por ejemplo, "spam" o "publicidad").
+
+//* Si la frase contiene una palabra prohibida, devolver "No válido".
+
+//* Si la frase es un palíndromo y no contiene palabras prohibidas, devolver "Es un palíndromo".
+
+//* Si no es un palíndromo, devolver "No es un palíndromo".
+
+//* Datos de Entrada:
+
+const frase1 = "  Anita lava la tina";
+const frase2 = "Este es un spam";
+const frase3 = "Hola mundo";
+//*Resultado Esperado:
+
+"Es un palíndromo"       // Para frase1
+"No válido"              // Para frase2
+"No es un palíndromo"    // Para frase3
+
+const verifyIfPalindrom=(phrase)=>{
+    
+   const convertedInArray=phrase.trim().toLowerCase().split("").filter(char=>char!==" ")
+   const invertedArray= phrase.trim().toLowerCase().split("").filter(char=>char!==" ").reverse()
+  
+   console.log("frase Normal   :  ",convertedInArray.join(""))
+   console.log("Frase Invertida:  ",invertedArray.join(""))
+   if(invertedArray.join("")===convertedInArray.join("")){
+    return "Es un palíndomo"
+   }else if(phrase.includes("spam")||phrase.includes("publicidad")) {
+     return "NO válido"
+   }else{
+    return "No es un palíndromo"
+   }
+   
+}
+
+const depuredPhrase= frase1.split(/\s+/)//!por si existe más de un espacio entre cada palabra, aqui el resultado es un array de strings "Anita     lava la    tina"=> ["Anita","lava","la","tina"]
+const depuredString=depuredPhrase.join(" ")//! de esto ["Anita","lava","la","tina"] => "Anita lava la tina"
+console.log("---------------------------Metodo includes()-------------------------------")
+
+console.log("Resultado de frase 1: ", verifyIfPalindrom(depuredString))
+console.log("\n //////////////-----------//////////////////")
+console.log("Resultado frase 2: ", verifyIfPalindrom(frase2))
+console.log("\n //////////////-----------//////////////////")
+
+console.log("Resultado frase 3:  ", verifyIfPalindrom(frase3))

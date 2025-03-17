@@ -327,3 +327,100 @@ const replaceText=(text)=>{
 console.log("-------------------------------------Método replace()-------------------------------")
 
 console.log("Informacion formateada con replace()\n",replaceText(text4) )
+
+//?----------------------------------toUpperCase y toLowerCase-------------------------------
+
+// *Resumen de lo que debes saber:
+//* No modifican el string original: Devuelven un nuevo string.
+
+//* Compatibilidad con Unicode: Funcionan bien con la mayoría de los caracteres, pero ten cuidado con idiomas específicos.
+
+//* Versiones locale-aware: Usa toLocaleUpperCase() y toLocaleLowerCase() para mayor precisión en idiomas específicos.
+const str = "istanbul";
+const upper = str.toLocaleUpperCase('tr-TR'); // "İSTANBUL" (correcto en turco)
+
+//* Comparaciones de strings: Útiles para normalizar strings antes de compararlos.
+
+//* Errores comunes: Asegúrate de que el valor sea un string antes de usarlos.
+
+//! toUpperCase(): Convierte el string a mayúsculas.
+const upper2 = str.toUpperCase(); // "HOLA MUNDO"
+
+//! toLowerCase(): Convierte el string a minúsculas.
+const lower = str.toLowerCase(); // "hola mundo"
+
+//?----------------------------------trim()-----------------------------------------
+
+// trim(): Elimina espacios en blanco al inicio y final.
+const trimmed = "  Hola  ".trim(); // "Hola"
+
+//?----------------------------------startsWith()-----------------------------------------
+
+// startsWith(): Verifica si el string comienza con una subcadena.
+const startsWithHola = str.startsWith("Hola"); // true
+//TODO Ejercicio práctico
+//* Enunciado:
+//* Escribe una función llamada verificarPrefijo que tome dos argumentos: un string (texto) y una subcadena (prefijo). La función debe devolver true si el string comienza con el prefijo proporcionado, y false en caso contrario. Además, la función debe ignorar mayúsculas y minúsculas al realizar la comparación.
+
+const text5=" La VACA lola Tiene Cabeza Y tiene cola"
+const verificarPrefijo =(text)=>{
+  const verificacion= text.toLowerCase().trim().startsWith("vaca",3)
+  if(verificacion){
+     console.log("el texto a partir de la posicion 3 empieza con vaca")
+  }else{
+    console.log("El texto en la posición 3 No empieza con Vaca")
+  }
+}
+
+console.log("-------------------------------------Método startsWith()-------------------------------")
+verificarPrefijo(text5)
+
+//?----------------------------------endsWith()-----------------------------------------
+
+// !endsWith(): Verifica si el string termina con una subcadena.
+const endsWithMundo = str.endsWith("Mundo"); // true
+
+// *Ejemplo básico
+
+const str3 = "Hola Mundo";
+const endsWithMundo3 = str.endsWith("Mundo"); //! true
+console.log(endsWithMundo); // !true
+//* En este caso, endsWithMundo será true porque el string "Hola Mundo" termina con "Mundo".
+
+//* Ejemplo con longitud
+// *Puedes especificar una longitud para limitar la parte del string que se evalúa. Por ejemplo:
+
+
+const str2 = "Hola Mundo";
+const endsWithHola = str.endsWith("Hola", 4); // true
+console.log("-------------------------------------Método endsWith()-------------------------------")
+console.log(endsWithHola); // true
+// *Aquí, endsWithHola será true porque, si limitamos la longitud del string a 4, el string evaluado es "Hola", que coincide con la subcadena proporcionada.
+
+// *Consideraciones adicionales
+//* Strings vacíos: Si el sufijo es un string vacío (""), endsWith() siempre devolverá true, ya que técnicamente todos los strings terminan con un string vacío.
+
+// *Sufijo más largo que el texto: Si el sufijo es más largo que el texto, endsWith() devolverá false.
+
+//?----------------------------------repeat()-----------------------------------------
+//* repeat(): Repite el string un número de veces.
+
+
+const  generarLinea=(caracter, longitud)=> {
+  // Verificar si la longitud es válida
+  if (longitud < 0) {
+      throw new Error("La longitud no puede ser negativa");
+  }
+
+  // Repetir el carácter hasta alcanzar la longitud
+  return caracter.repeat(longitud);
+}
+
+// Pruebas
+
+console.log("-------------------------------------Método repeat()-------------------------------")
+console.log(generarLinea("/--/", 15)); // "----------"
+console.log(generarLinea("*", 50)); // "*****"
+console.log(generarLinea("A", 35)); // "AAA"
+
+

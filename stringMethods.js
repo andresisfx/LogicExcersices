@@ -254,3 +254,76 @@ const formatDates=(text)=>{
 
 console.log("----------------------------------------Método substring()------------------------------")
 console.log("Fechas formateadas con substring: \n",formatDates(text3))
+
+
+//?----------------------------------------replace()---------------------------------------
+
+// *Sintaxis:
+// *javascript
+// *Copy
+// *string.replace(valorBuscar, valorReemplazar);
+//* valorBuscar: Puede ser un string o una expresión regular (regex) que define lo que se buscará en el string.
+
+//* valorReemplazar: El string o función que reemplazará la coincidencia.
+
+//* Características:
+//* Reemplazo simple:
+
+//* Si valorBuscar es un string, solo reemplaza la primera coincidencia.
+
+//* Ejemplo:
+
+// !const str = "Hola Mundo Mundo";
+// !console.log(str.replace("Mundo", "JavaScript")); // "Hola JavaScript Mundo"
+//* Reemplazo global:
+
+//* Si valorBuscar es una expresión regular con la bandera g, reemplaza todas las coincidencias.
+
+//* Ejemplo:
+
+
+//! const str = "Hola Mundo Mundo";
+//! console.log(str.replace(/Mundo/g, "JavaScript")); // "Hola JavaScript JavaScript"
+//* Funciones de reemplazo:
+
+//* Puedes pasar una función como valorReemplazar para realizar un reemplazo dinámico.
+
+//* Ejemplo:
+
+//!  const str = "Hola 123";
+//!  console.log(str.replace(/\d+/, (match) => parseInt(match) * 2)); // "Hola 246"
+//* No modifica el string original:
+
+//* Devuelve un nuevo string con los reemplazos aplicados.
+
+//TODO Ejercicio : Formatear y Reemplazar en un Texto Complejo
+//* Enunciado:
+// *Tienes un texto que contiene información sobre productos en el siguiente formato:
+
+
+//* "Producto: Camisa, Precio: $20; Producto: Pantalón, Precio: $40; Producto: Zapatos, Precio: $50"
+//* Tu tarea es:
+
+//* Reemplazar el símbolo $ por USD en los precios.
+
+//* Formatear cada producto para que tenga el formato: "<Nombre> - <Precio>".
+
+// *Unir todos los productos formateados en un solo string, separados por saltos de línea (\n).
+
+// *Datos de Entrada:
+
+
+ const text4 = "Producto: Camisa, Precio: $20; Producto: Pantalón, Precio: $40; Producto: Zapatos, Precio: $50";
+
+//* Resultado Esperado:
+
+//* "Camisa - USD20
+//* Pantalón - USD40
+// *Zapatos - USD50"
+
+const replaceText=(text)=>{
+  return text.split(";").map(str=> str.trim().split(",")).map(strArr=>`${strArr[0].slice(strArr[0].indexOf(":")+1)} - ${strArr[1].slice(strArr[1].replace("$","USD ").indexOf(":")+1)}`).join("\n")
+}
+console.log("-------------------------------------Método replace()-------------------------------")
+
+console.log("Informacion formateada con replace()\n",replaceText(text4) )

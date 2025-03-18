@@ -1,6 +1,29 @@
 //? ------------------------------------------reduce()----------------------------------------------
 
-//* Calcular el Total de una Lista de Compras
+// *array.reduce(callback(acumulador, valorActual, índice, array), valorInicial);
+// *Parámetros:
+// *callback: Es una función que se ejecuta en cada elemento del array. Recibe cuatro argumentos:
+
+//* acumulador: Es el valor acumulado que se va construyendo en cada iteración.
+
+//* valorActual: Es el valor del elemento actual que se está procesando en el array.
+
+// *índice (opcional): Es el índice del elemento actual que se está procesando.
+
+//* array (opcional): Es el array sobre el cual se está aplicando el método reduce.
+
+// *valorInicial (opcional): Es el valor inicial que se utiliza como acumulador en la primera iteración. Si no se proporciona, el primer elemento del array se toma como valor inicial y la iteración comienza desde el segundo elemento.
+
+//* ¿Qué hace reduce?
+// *Itera sobre cada elemento del array.
+
+//* Aplica la función callback a cada elemento.
+
+//* El valor devuelto por la función callback se convierte en el nuevo valor del acumulador para la siguiente iteración.
+
+//* Al final de la iteración, reduce devuelve el valor final del acumulador.
+
+//TODO Calcular el Total de una Lista de Compras
 //* Imagina que tienes una lista de objetos que representan productos en un carrito de compras. Cada producto tiene un nombre y un precio. Tu tarea es usar reduce() para calcular el total de la compra.
 
 //* Datos de Entrada:

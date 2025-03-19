@@ -89,7 +89,7 @@ const filtrarNombres=(nombres)=>{
 
 console.log("\nRespuesta al ejersicio 2",filtrarNombres(nombres))
 
-// TODOEjercicio: Filtrar objetos únicos basados en una propiedad
+// TODO Ejercicio3: Filtrar objetos únicos basados en una propiedad
 //* Enunciado:
 //* Tienes una lista de objetos que representan usuarios. Cada usuario tiene las propiedades id y nombre. Algunos usuarios pueden tener el mismo id, pero queremos obtener una lista de usuarios únicos basados en su id.
 
@@ -114,8 +114,51 @@ const usuarios = [
 ];
 
 const filterObjects=(usuarios)=>{
-  const set = new Set()
-  return set
+  const setIds = new Set();
+  const usuariosUnicos=[];
+
+  for(usuario of usuarios){
+    if(!setIds.has(usuario.id)){
+      setIds.add(usuario.id)
+      usuariosUnicos.push(usuario)
+    }
+    
+  }
+  return usuariosUnicos;
+  
 }
 
 console.log("respuesta al ejersicio 3",filterObjects(usuarios))
+
+//TODO Ejercicio 4: Encontrar la intersección de dos arrays
+//*Enunciado:
+//* Dados dos arrays de números, escribe una función que devuelva un nuevo array con los elementos que están presentes en ambos arrays (es decir, la intersección de los dos arrays). El array resultante no debe contener duplicados.
+
+//* Requisitos:
+//* Usa un Set para manejar los valores únicos.
+
+//* La función debe ser eficiente, especialmente para arrays grandes.
+
+//* Entrada:
+
+const array1 = [1, 2, 2, 3, 4, 5];
+const array2 = [2, 3, 3, 6, 7];
+//*Salida esperada:
+
+[2, 3]
+
+const encontrarInterseccion=(arr1,arr2)=>{
+    const setArray= new Set(arr1)
+    
+    let interseccion=new Set()
+    for(const num of arr2){
+      if(setArray.has(num)){
+          interseccion.add(num)
+      }
+    }
+    return [...interseccion]
+
+    
+}
+console.log("Respuesta al ejersicio 4: ",encontrarInterseccion(array1,array2))
+

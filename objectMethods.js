@@ -286,3 +286,254 @@ console.log("Objeto 1:", obj1);
 console.log("Objeto 2:", obj2);
 console.log("Objeto 3:", obj3);
 console.log("Nuevo objeto combinado:", newObj);
+
+
+//?----------------------------------Object.freeze-------------------------------------------
+
+// Detalles importantes:
+// Congelación superficial:
+
+// Object.freeze() solo congela el objeto en el primer nivel. Si el objeto contiene propiedades que son objetos o arrays, esos objetos o arrays no se congelan y pueden ser modificados.
+
+// Ejemplo:
+
+// javascript
+// Copy
+// const obj = { a: 1, b: { c: 2 } };
+// Object.freeze(obj);
+
+// obj.a = 10; // No tiene efecto
+// obj.b.c = 20; // ¡Sí tiene efecto!
+// console.log(obj); // { a: 1, b: { c: 20 } }
+// No se puede deshacer:
+
+// Una vez que un objeto está congelado, no se puede descongelar. No hay un método nativo en JavaScript para "descongelar" un objeto.
+
+// Modo estricto (strict mode):
+
+// En modo no estricto, si intentas modificar un objeto congelado, simplemente no tendrá efecto.
+
+// En modo estricto ("use strict"), intentar modificar un objeto congelado lanzará un error.
+
+// Ejemplo:
+
+// javascript
+// Copy
+// "use strict";
+// const obj = { a: 1 };
+// Object.freeze(obj);
+
+// obj.a = 10; // Lanza un error: TypeError
+// No afecta a propiedades no enumerables:
+
+// Object.freeze() solo afecta a las propiedades enumerables del objeto. Las propiedades no enumerables (como las heredadas) no se ven afectadas.
+
+// No se pueden agregar o eliminar propiedades del prototipo:
+
+// Si el objeto tiene un prototipo, Object.freeze() no evita que se agreguen o eliminen propiedades del prototipo.
+
+// Ejemplo básico:
+console.log("---------------------------------Método Object.freeze()------------------------------")
+
+const obj5 = { a: 1, b: 2 };
+
+Object.freeze(obj5);
+
+obj5.a = 10; // No tiene efecto
+obj5.c = 3; // No tiene efecto
+delete obj5.b; // No tiene efecto
+
+console.log(obj5); // { a: 1, b: 2 }
+// TODO Ejercicio práctico:
+//* Ejercicio 1: Congelar un objeto
+// *Dado el siguiente objeto, congélalo usando Object.freeze() y luego intenta modificarlo. Observa qué sucede.
+
+
+const usuario = {
+  nombre: "Ana",
+  edad: 25,
+  direccion: {
+    ciudad: "Madrid",
+    pais: "España"
+  }
+};
+
+// Congela el objeto
+Object.freeze(usuario);
+
+// Intenta modificar propiedades
+usuario.nombre = "Carlos"; // ¿Qué sucede?
+usuario.direccion.ciudad = "Barcelona"; // ¿Qué sucede?
+
+console.log(usuario);
+
+//?-------------------------------------------Object.seal()-------------------------------------
+
+// ¿Qué hace Object.seal()?
+// El método Object.seal() sella un objeto, lo que significa:
+
+// Evita agregar nuevas propiedades: No se pueden agregar nuevas propiedades al objeto.
+
+// Evita eliminar propiedades: No se pueden eliminar propiedades existentes.
+
+// Permite modificar propiedades existentes: Los valores de las propiedades existentes sí se pueden modificar.
+
+// Sintaxis:
+
+// javascript
+// Copy
+// Object.seal(obj);
+// obj: El objeto que se desea sellar.
+
+// Valor de retorno:
+
+// Devuelve el mismo objeto que fue pasado como argumento, pero ahora sellado.
+
+// Detalles importantes:
+// Sellado superficial:
+
+// Object.seal() solo sella el objeto en el primer nivel. Si el objeto contiene propiedades que son objetos o arrays, esos objetos o arrays no se sellan y pueden ser modificados.
+
+// Ejemplo:
+
+// javascript
+// Copy
+// const obj = { a: 1, b: { c: 2 } };
+// Object.seal(obj);
+
+// obj.a = 10; // Funciona
+// obj.b.c = 20; // ¡También funciona!
+// console.log(obj); // { a: 10, b: { c: 20 } }
+// No se puede deshacer:
+
+// Una vez que un objeto está sellado, no se puede "desellar". No hay un método nativo en JavaScript para revertir el sellado.
+
+// Modo estricto (strict mode):
+
+// En modo no estricto, si intentas agregar o eliminar propiedades de un objeto sellado, simplemente no tendrá efecto.
+
+// En modo estricto ("use strict"), intentar agregar o eliminar propiedades de un objeto sellado lanzará un error.
+
+// Ejemplo:
+
+// javascript
+// Copy
+// "use strict";
+// const obj = { a: 1 };
+// Object.seal(obj);
+
+// obj.b = 2; // Lanza un error: TypeError
+// No afecta a propiedades no enumerables:
+
+// Object.seal() solo afecta a las propiedades enumerables del objeto. Las propiedades no enumerables (como las heredadas) no se ven afectadas.
+
+// No se pueden reconfigurar propiedades:
+
+// Aunque puedes modificar los valores de las propiedades existentes, no puedes cambiar sus atributos (como configurable, enumerable, writable).
+
+// Ejemplo básico:
+
+console.log("------------------------------------Método Object.seal()------------------------------")
+const obj6 = { a: 1, b: 2 };
+
+Object.seal(obj6);
+
+obj6.a = 10; //* Funciona
+obj6.c = 3; //* No tiene efecto
+delete obj6.b; //* No tiene efecto
+
+console.log(obj6); // { a: 10, b: 2 }
+//TODO Ejercicio práctico:
+//* Ejercicio 1: Sellar un objeto
+// *Dado el siguiente objeto, séllalo usando Object.seal() y luego intenta modificarlo. Observa qué sucede.
+
+
+const usuario2 = {
+  nombre: "Ana",
+  edad: 25,
+  direccion: {
+    ciudad: "Madrid",
+    pais: "España"
+  }
+};
+
+// Sella el objeto
+Object.seal(usuario2);
+
+// Intenta modificar propiedades
+usuario2.nombre = "Carlos"; // ¿Qué sucede?
+usuario2.direccion.ciudad = "Barcelona"; // ¿Qué sucede?
+
+// Intenta agregar y eliminar propiedades
+usuario2.email = "ana@example.com"; // ¿Qué sucede?
+delete usuario2.edad; // ¿Qué sucede?
+
+console.log(usuario2);
+
+//?--------------------------------------hasOwnProperty()-------------------------------------
+
+
+//* Detalles importantes:
+// *Solo propiedades directas:
+
+//* hasOwnProperty() solo verifica propiedades que pertenecen directamente al objeto, no propiedades heredadas de su prototipo.
+
+//* Ejemplo:
+
+
+const obj7 = { a: 1 };
+console.log(obj7.hasOwnProperty("a")); // true
+console.log(obj7.hasOwnProperty("toString")); // false (toString es heredado)
+//* No verifica propiedades no enumerables:
+
+//* hasOwnProperty() funciona con propiedades enumerables y no enumerables, siempre y cuando sean propiedades directas del objeto.
+
+//* Uso con objetos creados con Object.create(null):
+
+//* Si un objeto se crea con Object.create(null), no hereda el método hasOwnProperty() de Object.prototype. En este caso, debes usar Object.prototype.hasOwnProperty.call(obj, prop).
+
+//* Ejemplo:
+console.log("------------------------------------Método hsOwnPropertyl()------------------------------")
+
+const obj8 = Object.create(null);
+obj8.a = 1;
+console.log(Object.prototype.hasOwnProperty.call(obj8, "a")); // true
+//* No verifica propiedades en la cadena de prototipos:
+
+//* Si necesitas verificar propiedades en toda la cadena de prototipos, debes usar el operador in.
+
+//* Ejemplo:
+
+
+const obj9 = { a: 1 };
+console.log("toString" in obj9); // true (toString es heredado)
+
+//TODO Ejercicio 1: Verificar propiedades en un objeto
+// *Dado el siguiente objeto, escribe una función que verifique si el objeto tiene ciertas propiedades y devuelva un objeto con los resultados.
+
+//*Salida esperada:
+
+
+//* { nombre: true, edad: true, email: false, toString: false }
+const usuario3 = {
+  nombre: "Ana",
+  edad: 25,
+  direccion: {
+    ciudad: "Madrid",
+    pais: "España"
+  }
+};
+
+// Escribe tu función aquí
+function verificarPropiedades(obj, propiedades) {
+  const resultados = {};
+  for (const prop of propiedades) {
+    resultados[prop] = obj.hasOwnProperty(prop);
+  }
+  return resultados;
+}
+
+const propiedadesAVerificar = ["nombre", "edad", "email", "toString"];
+const resultados = verificarPropiedades(usuario3, propiedadesAVerificar);
+
+console.log(resultados);

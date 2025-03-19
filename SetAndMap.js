@@ -60,3 +60,62 @@ const arrayConDuplicados = [1, 2, 2, 3, 4, 4, 5];
 const arraySinDuplicados = eliminarDuplicados(arrayConDuplicados);
 
 console.log("\nRespuesta al Ejercicio 1: Eliminar duplicados de un array",arraySinDuplicados); //* [1, 2, 3, 4, 5]
+
+//TODO Ejersicio2: Filtrar nombres únicos de una lista
+//* Enunciado:
+//* Tienes una lista de nombres que puede contener duplicados. Tu tarea es escribir una función que tome esta lista y devuelva un nuevo array con los nombres únicos, es decir, sin duplicados.
+
+// *Requisitos:
+//* Usa un Set para eliminar los duplicados.
+
+//* Convierte el Set de nuevo a un array antes de devolverlo.
+
+//* Entrada:
+
+const nombres = [
+  "Juan", "Ana", "Carlos", "Ana", "Maria", "Juan", "Pedro", "Maria"
+];
+//*Salida esperada:
+
+//*["Juan", "Ana", "Carlos", "Maria", "Pedro"]
+
+const filtrarNombres=(nombres)=>{
+   const set=new Set(nombres);
+   const nombresFiltrados = [...set]
+    
+    return nombresFiltrados
+
+}
+
+console.log("\nRespuesta al ejersicio 2",filtrarNombres(nombres))
+
+// TODOEjercicio: Filtrar objetos únicos basados en una propiedad
+//* Enunciado:
+//* Tienes una lista de objetos que representan usuarios. Cada usuario tiene las propiedades id y nombre. Algunos usuarios pueden tener el mismo id, pero queremos obtener una lista de usuarios únicos basados en su id.
+
+//* Requisitos:
+//* Usa un Set para eliminar los objetos duplicados basados en la propiedad id.
+
+//* Convierte el Set de nuevo a un array antes de devolverlo.
+//* Salida esperada:
+// *[
+// *  { id: 1, nombre: "Juan" },
+//*   { id: 2, nombre: "Ana" },
+//*   { id: 3, nombre: "Maria" },
+//* ]
+//* Entrada:
+
+const usuarios = [
+  { id: 1, nombre: "Juan" },
+  { id: 2, nombre: "Ana" },
+  { id: 1, nombre: "Carlos" }, // Mismo id que el primer usuario
+  { id: 3, nombre: "Maria" },
+  { id: 2, nombre: "Pedro" }, // Mismo id que el segundo usuario
+];
+
+const filterObjects=(usuarios)=>{
+  const set = new Set()
+  return set
+}
+
+console.log("respuesta al ejersicio 3",filterObjects(usuarios))

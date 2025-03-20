@@ -162,3 +162,42 @@ const encontrarInterseccion=(arr1,arr2)=>{
 }
 console.log("Respuesta al ejersicio 4: ",encontrarInterseccion(array1,array2))
 
+// TODO Ejercicio: Encontrar la diferencia simétrica entre dos arrays
+// *Enunciado:
+// *Dados dos arrays de números, escribe una función que devuelva un nuevo array con los elementos que están en solo uno de los dos arrays (es decir, la diferencia simétrica entre los dos arrays). El array resultante no debe contener duplicados.
+
+// *Requisitos:
+// *Usa Set para manejar los valores únicos.
+
+// *La función debe ser eficiente, especialmente para arrays grandes.
+
+// *Entrada:
+
+const array3 = [1, 2, 3, 4, 5];
+const array4 = [3, 4, 5, 6, 7];
+//*Salida esperada:
+
+//*[1, 2, 6, 7]
+
+const diferenciaSimetrica=(arr1,arr2)=>{
+    const setArray1 = new  Set(arr1);
+    const setArray2 = new  Set(arr2);
+    
+    let elementosSimetricos= new Set();
+    for(const numArr1 of setArray1){
+       if(!setArray2.has(numArr1)){
+         elementosSimetricos.add(numArr1)
+        
+       }  
+    }
+    for(const numArr2 of setArray2){
+      if(!setArray1.has(numArr2)){
+        
+        elementosSimetricos.add(numArr2)
+      }  
+   }
+    
+    return [...elementosSimetricos]
+}
+
+console.log("Respuesta al ejersicio 5: ",diferenciaSimetrica(array3,array4))

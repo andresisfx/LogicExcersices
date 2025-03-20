@@ -36,6 +36,18 @@
 //** Claves de cualquier tipo:
 
 // **Puedes usar objetos, funciones, números, etc., como claves en un Map.
+//* Preguntas para reflexionar:
+//* ¿Cuándo usar un Map en lugar de un objeto tradicional?
+
+//* Respuesta: Usa un Map cuando necesites claves que no sean strings, cuando el orden de inserción sea importante, o cuando necesites métodos específicos como size.
+
+//* ¿Qué pasa si intentas usar un objeto como clave en un objeto tradicional?
+
+// *Respuesta: El objeto se convertirá en un string ([object Object]), lo que puede llevar a colisiones si usas múltiples objetos como claves.
+
+//*¿Cómo iterar sobre las claves o valores de un Map?
+
+// *Respuesta: Puedes usar mapa.keys() para iterar sobre las claves, mapa.values() para iterar sobre los valores, o mapa.entries() para iterar sobre pares clave-valor.
 
 console.log("-------------------------------------Coleccion de datos Map()-------------------------------")
 
@@ -120,15 +132,15 @@ for (const [clave, valor] of mapa3) {
 // *Escribe una función que tome un array de palabras y devuelva un Map con la frecuencia de cada palabra.
 const palabras = ["hola", "mundo", "hola", "javascript", "mundo", "hola"];
 const contarFrecuenciaPalabras=(palabras)=>{
-    const map =new Map()
+    const freuencia =new Map()
     for(const palabra of palabras){
-        if(map.has(palabra)){
-            map.set(palabra,(map.get(palabra)+1))
+        if(freuencia.has(palabra)){
+            freuencia.set(palabra,freuencia.get(palabra)+1)
            
         }else{
-        map.set(palabra,1)
+            freuencia.set(palabra,1)
         }
     }
-    return map
+    return freuencia
 }
-console.log("\nRespuesta al ejersicio 1" ,contarFrecuenciaPalabras(palabras));
+console.log("\nRespuesta al ejersicio 1 frecuencia depalabras: " ,contarFrecuenciaPalabras(palabras));

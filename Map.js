@@ -144,3 +144,32 @@ const contarFrecuenciaPalabras=(palabras)=>{
     return freuencia
 }
 console.log("\nRespuesta al ejersicio 1 frecuencia depalabras: " ,contarFrecuenciaPalabras(palabras));
+
+//TODO Ejercicio 2: Almacenar objetos como claves
+//* Escribe una función que tome un array de objetos y use un Map para almacenar cada objeto como clave y un valor asociado (por ejemplo, un ID único).
+
+
+function almacenarObjetosConID(objetos) {
+  const mapa = new Map();
+  let id= 0
+  for(const obj of objetos){
+    mapa.set(id +1,obj)
+    id++
+  }
+ return mapa
+}
+
+// Ejemplo de uso
+const arrDebjetos = [
+  { nombre: "Juan" },
+  { nombre: "Ana" },
+  { nombre: "Carlos" }
+];
+
+ 
+
+console.log( "\nReaspuesta ejersicio: ",almacenarObjetosConID(arrDebjetos))
+// Salida:
+// ID: 1, Objeto: {"nombre":"Juan"}
+// ID: 2, Objeto: {"nombre":"Ana"}
+// ID: 3, Objeto: {"nombre":"Carlos"}

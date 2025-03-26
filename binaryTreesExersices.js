@@ -6,7 +6,7 @@ function BinarySearchTree(value) {
  BinarySearchTree.prototype.insert=function(val){
     if(val<this.root){
        if(this.left){
-          this.left.inset(val)
+          this.left.insert(val)
        }else{
           this.left= new BinarySearchTree(val)
        }

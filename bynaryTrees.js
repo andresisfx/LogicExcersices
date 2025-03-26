@@ -76,6 +76,8 @@ class ArbolBinario {
         
      }
 }
+     
+
 
 const miArbol=new ArbolBinario()
 miArbol.insertarValorenArbol(15)
@@ -84,6 +86,6 @@ miArbol.insertarValorenArbol(17)
 miArbol.insertarValorenArbol(18)
 miArbol.insertarValorenArbol(14)
 miArbol.insertarValorenArbol(13)
-miArbol.insertarValorenArbol(12)
 miArbol.insertarValorenArbol(11)
+miArbol.insertarValorenArbol(12)
 console.log(miArbol)

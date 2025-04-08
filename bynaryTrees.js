@@ -105,7 +105,7 @@ class ArbolBinario {
     this.raiz=null
   }
 
-  insertarValorEnArbol=(val)=>{
+  insertarValorEnArbol(val){
      const nuevoNodo = new Nodo(val)
      if(!this.raiz){
         this.raiz=nuevoNodo
@@ -113,7 +113,7 @@ class ArbolBinario {
         this._insertarNodo(this.raiz,nuevoNodo)
      }
   }
-  _insertarNodo=(nodoActual,nuevoNodo)=>{
+  _insertarNodo(nodoActual,nuevoNodo){
     if(nuevoNodo.value<nodoActual.value){
        if(!nodoActual.izquierdo){
         nodoActual.izquierdo=nuevoNodo
@@ -129,6 +129,17 @@ class ArbolBinario {
 
     }
   }
+
+  buscarValor(valor,nodo=this.raiz){
+       if(!nodo) return false;
+       if(valor===nodo.value) return true
+       return valor<nodo.value?
+              this.buscarValor(valor,nodo.izquierdo):
+              this.buscarValor(valor,nodo.derecho)
+
+
+       
+  }
 }
 
 
@@ -141,4 +152,5 @@ miArbol.insertarValorEnArbol(14)
 miArbol.insertarValorEnArbol(13)
 miArbol.insertarValorEnArbol(11)
 miArbol.insertarValorEnArbol(12)
+console.log("buscando valor ",miArbol.buscarValor(16))
 console.log(JSON.stringify(miArbol, null, 2));

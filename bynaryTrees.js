@@ -105,41 +105,62 @@ class ArbolBinario {
     this.raiz=null
   }
 
-  insertarValorEnArbol(val){
-     const nuevoNodo = new Nodo(val)
-     if(!this.raiz){
-        this.raiz=nuevoNodo
-     }else{
-        this._insertarNodo(this.raiz,nuevoNodo)
-     }
-  }
-  _insertarNodo(nodoActual,nuevoNodo){
-    if(nuevoNodo.value<nodoActual.value){
-       if(!nodoActual.izquierdo){
-        nodoActual.izquierdo=nuevoNodo
-       }else{
-        this._insertarNodo( nodoActual.izquierdo,nuevoNodo)
-       }
-    }else{
-        if(!nodoActual.derecho){
-            nodoActual.derecho=nuevoNodo
-        }else{
-            this._insertarNodo(nodoActual.derecho,nuevoNodo)
-        }
-
+    insertarValorEnArbol(val){
+      const nuevoNodo = new Nodo(val)
+      if(!this.raiz){
+          this.raiz=nuevoNodo
+      }else{
+          this._insertarNodo(this.raiz,nuevoNodo)
+      }
     }
-  }
+    _insertarNodo(nodoActual,nuevoNodo){
+      if(nuevoNodo.value<nodoActual.value){
+        if(!nodoActual.izquierdo){
+          nodoActual.izquierdo=nuevoNodo
+        }else{
+          this._insertarNodo( nodoActual.izquierdo,nuevoNodo)
+        }
+      }else{
+          if(!nodoActual.derecho){
+              nodoActual.derecho=nuevoNodo
+          }else{
+              this._insertarNodo(nodoActual.derecho,nuevoNodo)
+          }
 
-  buscarValor(valor,nodo=this.raiz){
-       if(!nodo) return false;
-       if(valor===nodo.value) return true
-       return valor<nodo.value?
-              this.buscarValor(valor,nodo.izquierdo):
-              this.buscarValor(valor,nodo.derecho)
+      }
+    }
+
+    buscarValor(valor,nodo=this.raiz){
+        if(!nodo) return false;
+        if(valor===nodo.value) return true
+        return valor<nodo.value?
+                this.buscarValor(valor,nodo.izquierdo):
+                this.buscarValor(valor,nodo.derecho)
+      
+    }
+    //In-order (izquierda, raíz, derecha)
+
+    _inOrder(nodo=this.raiz,result=[]){
+      if(nodo){
+        this._inOrder(nodo.izquierdo, result)
+        result.push(nodo.value)
+        this._inOrder(nodo.derecho,result)
+      }
+      return result
+    }
+
+    // Pre-order (raíz, izquierda, derecha)
+    _preOrder(nodo=this.raiz,result=[]){
+        if(nodo){
+          result.push(nodo.value);
+          this._preOrder(nodo.izquierdo,result);
+          this._preOrder(nodo.derecho,result);
+
+        }
+        return result
+    }
 
 
-       
-  }
 }
 
 
@@ -152,5 +173,10 @@ miArbol.insertarValorEnArbol(14)
 miArbol.insertarValorEnArbol(13)
 miArbol.insertarValorEnArbol(11)
 miArbol.insertarValorEnArbol(12)
+
 console.log("buscando valor ",miArbol.buscarValor(16))
 console.log(JSON.stringify(miArbol, null, 2));
+console.log(miArbol._inOrder());
+console.log(miArbol._preOrder());
+
+

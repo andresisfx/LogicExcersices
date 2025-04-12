@@ -159,6 +159,15 @@ class ArbolBinario {
         }
         return result
     }
+    _postOrder(nodo=this.raiz,result=[]){
+        if(nodo){
+          this._postOrder(nodo.izquierdo,result);
+          this._postOrder(nodo.derecho,result);
+          result.push(nodo.value)
+
+        }
+        return result 
+    }
 
 
 }
@@ -176,7 +185,8 @@ miArbol.insertarValorEnArbol(12)
 
 console.log("buscando valor ",miArbol.buscarValor(16))
 console.log(JSON.stringify(miArbol, null, 2));
-console.log(miArbol._inOrder());
-console.log(miArbol._preOrder());
+console.log("in order\n",miArbol._inOrder());
+console.log("PRE-order\n",miArbol._preOrder());
+console.log("POST-order\n",miArbol._postOrder());
 
 

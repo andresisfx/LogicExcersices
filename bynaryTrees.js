@@ -169,6 +169,33 @@ class ArbolBinario {
         return result 
     }
 
+    delete(value) {
+      this.root = this._deleteNode(this.root, value);
+    }
+    
+    _deleteNode(node, value) {
+      if (!node) return null;
+      if (value < node.value) {
+        node.left = this._deleteNode(node.left, value);
+      } else if (value > node.value) {
+        node.right = this._deleteNode(node.right, value);
+      } else {
+        // Caso 1: Nodo hoja o con un hijo
+        if (!node.left) return node.right;
+        if (!node.right) return node.left;
+        // Caso 2: Nodo con dos hijos (buscar sucesor in-order)
+        const tempNode = this._findMin(node.right);
+        node.value = tempNode.value;
+        node.right = this._deleteNode(node.right, tempNode.value);
+      }
+      return node;
+    }
+    
+    _findMin(node) {
+      while (node.left) node = node.left;
+      return node;
+    }
+
 
 }
 
@@ -183,7 +210,7 @@ miArbol.insertarValorEnArbol(13)
 miArbol.insertarValorEnArbol(11)
 miArbol.insertarValorEnArbol(12)
 
-console.log("buscando valor ",miArbol.buscarValor(16))
+console.log("buscando valor ",miArbol.buscarValor(16));
 console.log(JSON.stringify(miArbol, null, 2));
 console.log("in order\n",miArbol._inOrder());
 console.log("PRE-order\n",miArbol._preOrder());

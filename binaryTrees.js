@@ -196,6 +196,46 @@ class ArbolBinario {
       return node;
     }
 
+    eliminarNodo(nodo, valor) {
+      if (nodo === null) {
+          return null;
+      }
+
+      if (valor < nodo.valor) {
+          nodo.izquierda = this.eliminarNodo(nodo.izquierda, valor);
+          return nodo;
+      } else if (valor > nodo.valor) {
+          nodo.derecha = this.eliminarNodo(nodo.derecha, valor);
+          return nodo;
+      } else {
+          // Caso 1: Nodo sin hijos (nodo hoja)
+          if (nodo.izquierda === null && nodo.derecha === null) {
+              return null;
+          }
+
+          // Caso 2: Nodo con un solo hijo
+          if (nodo.izquierda === null) {
+              return nodo.derecha;
+          } else if (nodo.derecha === null) {
+              return nodo.izquierda;
+          }
+
+          // Caso 3: Nodo con dos hijos
+          const sucesor = this.encontrarMinimo(nodo.derecha);
+          nodo.valor = sucesor.valor;
+          nodo.derecha = this.eliminarNodo(nodo.derecha, sucesor.valor);
+          return nodo;
+      }
+  }
+
+  // Método auxiliar para encontrar el nodo con el valor mínimo
+  encontrarMinimo(nodo) {
+      while (nodo && nodo.izquierda !== null) {
+          nodo = nodo.izquierda;
+      }
+      return nodo;
+  }
+
 
 }
 

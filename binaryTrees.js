@@ -191,50 +191,44 @@ class ArbolBinario {
       return node;
     }
     
+    // Método auxiliar para encontrar el nodo con el valor mínimo
     _findMin(node) {
       while (node.left) node = node.left;
       return node;
     }
 
-    eliminarNodo(nodo, valor) {
-      if (nodo === null) {
-          return null;
+   eliminar (value){
+       this.root=_eliminarNodo(this.root,value)
+   }
+
+   _eliminarNodo(nodo,value){
+      if(!nodo) {
+      
+        return null
       }
-
-      if (valor < nodo.valor) {
-          nodo.izquierda = this.eliminarNodo(nodo.izquierda, valor);
-          return nodo;
-      } else if (valor > nodo.valor) {
-          nodo.derecha = this.eliminarNodo(nodo.derecha, valor);
-          return nodo;
-      } else {
-          // Caso 1: Nodo sin hijos (nodo hoja)
-          if (nodo.izquierda === null && nodo.derecha === null) {
-              return null;
-          }
-
-          // Caso 2: Nodo con un solo hijo
-          if (nodo.izquierda === null) {
-              return nodo.derecha;
-          } else if (nodo.derecha === null) {
-              return nodo.izquierda;
-          }
-
-          // Caso 3: Nodo con dos hijos
-          const sucesor = this.encontrarMinimo(nodo.derecha);
-          nodo.valor = sucesor.valor;
-          nodo.derecha = this.eliminarNodo(nodo.derecha, sucesor.valor);
-          return nodo;
+      if(value<nodo.value){
+        this._eliminarNodo(nodo.izquierdo,value)
+      }else if(value>nodo.value){
+        this._eliminarNodo(nodo.derecho,value)
+      }else{
+        if(!nodo.izquierda)return nodo.derecho;
+        if(!nodo.derecha)return nodo.izquierda;
+      
+      const sucesor = this.encontrarMinimo(nodo.derech);
+      nodo.value = sucesor
+      nodo.derecha
       }
-  }
+      return nodo
+   }
+    
+   encontrarMinimo(nodo){
+     while(nodo.izquierda){
+       nodo= nodo.izquierda;
+     }
+     return nodo
+   }
 
-  // Método auxiliar para encontrar el nodo con el valor mínimo
-  encontrarMinimo(nodo) {
-      while (nodo && nodo.izquierda !== null) {
-          nodo = nodo.izquierda;
-      }
-      return nodo;
-  }
+
 
 
 }

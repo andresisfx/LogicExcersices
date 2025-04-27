@@ -169,65 +169,31 @@ class ArbolBinario {
         return result 
     }
 
-    delete(value) {
-      this.root = this._deleteNode(this.root, value);
-    }
-    
-    _deleteNode(node, value) {
-      if (!node) return null;
-      if (value < node.value) {
-        node.left = this._deleteNode(node.left, value);
-      } else if (value > node.value) {
-        node.right = this._deleteNode(node.right, value);
-      } else {
-        // Caso 1: Nodo hoja o con un hijo
-        if (!node.left) return node.right;
-        if (!node.right) return node.left;
-        // Caso 2: Nodo con dos hijos (buscar sucesor in-order)
-        const tempNode = this._findMin(node.right);
-        node.value = tempNode.value;
-        node.right = this._deleteNode(node.right, tempNode.value);
-      }
-      return node;
-    }
-    
-    // Método auxiliar para encontrar el nodo con el valor mínimo
-    _findMin(node) {
-      while (node.left) node = node.left;
-      return node;
-    }
 
-   eliminar (value){
-       this.root=_eliminarNodo(this.root,value)
-   }
+  _eliminar(valor){
+     this.raiz=this._eliminarNodo(this.raiz,valor)
+  }
 
-   _eliminarNodo(nodo,value){
-      if(!nodo) {
-      
-        return null
-      }
-      if(value<nodo.value){
-        this._eliminarNodo(nodo.izquierdo,value)
-      }else if(value>nodo.value){
-        this._eliminarNodo(nodo.derecho,value)
-      }else{
-        if(!nodo.izquierda)return nodo.derecho;
-        if(!nodo.derecha)return nodo.izquierda;
-      
-      const sucesor = this.encontrarMinimo(nodo.derech);
-      nodo.value = sucesor
-      nodo.derecha
-      }
-      return nodo
+  _eliminarNodo(nodo,valor){
+    if(!nodo)return null
+    if(valor<nodo.value){
+       nodo.izquierdo=this._eliminarNodo(nodo.izquierdo,valor)
+    }else if(valor>nodo.value){
+      nodo.derecho=this._eliminarNodo(nodo.derecho,valor)
+    }else{
+      //nodo con un hijo además si encuentra un nodo sin hijos (hoja), en este punto se eliminará ya que no habrá ni izquierdo ni derecho y en cualquier caso retornará null
+      if(!nodo.izquierdo)return nodo.derecho;
+      if(!nodo.derecho)return nodo.izquierdo;
+       const sucesor = this._encontrarMinimo(nodo.derecho)
+       nodo.value=sucesor.value;
+       nodo.derecho=this._eliminarNodo(nodo.derecho,sucesor.value)
+    }
+    return nodo
+  }
+   _encontrarMinimo(nodo){
+    while(nodo.izquierdo) nodo=nodo.izquierdo
+    return nodo
    }
-    
-   encontrarMinimo(nodo){
-     while(nodo.izquierda){
-       nodo= nodo.izquierda;
-     }
-     return nodo
-   }
-
 
 
 
@@ -244,6 +210,7 @@ miArbol.insertarValorEnArbol(13)
 miArbol.insertarValorEnArbol(11)
 miArbol.insertarValorEnArbol(12)
 
+
 console.log("buscando valor ",miArbol.buscarValor(16));
 console.log(JSON.stringify(miArbol, null, 2));
 console.log("in order\n",miArbol._inOrder());
@@ -251,3 +218,5 @@ console.log("PRE-order\n",miArbol._preOrder());
 console.log("POST-order\n",miArbol._postOrder());
 
 
+miArbol._eliminar(15)
+console.log("Arbol despues de eliminar nodo 16",JSON.stringify(miArbol, null, 2));

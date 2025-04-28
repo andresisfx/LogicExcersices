@@ -83,8 +83,45 @@ BinarySearchTree.prototype.breadthFirstForEach=function(cb,arr=[]){
 
 
 
+class Nodo{
+  constructor(valor){
+   this.izquierdo=null;
+   this.derecho=null;
+   this.value=valor;
+  }
+}
 
+class ArbolBinario{
+   constructor(){
+      this.raiz=null
+   }
 
+   _insertarValor(valor){
+      const nuevoNodo= new Nodo(valor);
+     if(!this.raiz){
+        this.raiz=nuevoNodo
+     }else{
+      this._insertarNodo(this.raiz,nuevoNodo)
+     }
+   }
+
+   _insertarNodo(nodo,nuevoNodo){
+      if(valor<nodo.valor){
+         if(!nodo.izquierdo){
+            nodo.izquierdo=nuevoNodo
+         }else{
+            this._insertarNodo(nodo.izquierdo,nuevoNodo)
+         }
+      }else{
+         if(!nodo.derecho){
+            nodo.derecho=nuevoNodo
+         }else{
+            this._insertarNodo(nodo.derecho.nuevoNodo)
+         }
+      }
+
+   }
+}
 
 
 

@@ -121,6 +121,66 @@ class ArbolBinario{
       }
 
    }
+
+   _inOrder(nodo=this.raiz,result=[]){
+     if(nodo){
+      this._inOrder(nodo.izquierdo,result)
+      result.push(nodo.value)
+      this._inOrder(nodo.derecho,result)
+     }
+     return result
+   }
+   _preOrder(nodo=this.raiz,result=[]){
+      if(nodo){
+         result.push(nodo.value);
+         this._preOrder(nodo.izquierdo,result);
+         this._preOrder(nodo.derecho,result);
+      }
+      return result
+   }
+   _postOrder(nodo=this.raiz,result=[]){
+      if(nodo){
+         this._postOrder(nodo.izquierdo,result);
+         this._postOrder(nodo.derecho,result);
+         result.push(nodo.value);
+      }
+      return result 
+   }
+   _buscarValor(nodo=this.raiz,valor){
+     if(!nodo)return false;
+     if(valor===nodo.value)return true;
+     return valor<nodo.value?
+            this._buscarValor(nodo.izquierdo,valor):
+            this._buscarValor(nodo.derecho,valor)
+
+   }
+
+   _eliminar(valor){
+     if(!this.raiz)return null
+     this._eliminarNodo(this.raiz,valor)
+   }
+   _eliminarNodo(nodo,valor){
+      if(!nodo)return null
+      if(valor<nodo.value){
+         nodo.izquierdo=this._eliminarNodo(nodo.izquierdo,valor)
+      }else if(valor>nodo.value){
+         nodo.derecho= this._eliminarNodo(nodo.derecho,valor)
+      }else{
+         if(!nodo.derecho)nodo=nodo.izquierdo;
+         if(!nodo.izquierdo)nodo=nodo.derecho;
+      
+         const sucesor=this._encontrarMiimo(nodo.derecho)
+         nodo.value=sucesor.value;
+         this._eliminarNodo(nodo.derecho,sucesor.value)
+      }
+      return nodo
+   }
+   _encontrarMiimo(nodo){
+     while(nodo.izquierdo)nodo=nodo.izquierdo;
+     return nodo
+   }
+
+   
 }
 
 

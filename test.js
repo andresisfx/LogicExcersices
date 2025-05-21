@@ -1,10 +1,24 @@
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-const length = 50; // Largo del IIU Id
-let accountTag = '';
+const s= "pwwkew"
 
-for (let i = 0; i < length; i++) {
-  const randomIndex = Math.floor(Math.random() * characters.length);
-  accountTag += characters.charAt(randomIndex);
-}
+var lengthOfLongestSubstring = function(s) {
+    const arrString= s.split("");
+    let strContainer=[];
+    let nuevoStrCont=[]
+    console.log("aqui arrString",arrString)
+    arrString.map((str)=>{
+        console.log(str)
+        if(strContainer.includes(str)){
+            console.log("entre al if")
+            console.log("strContainer antes del splice",strContainer)
+            nuevoStrContstrContainer.splice(strContainer.indexOf(str)+1,strContainer.length);
+            strContainer.push(str)
+            console.log("aquui strContainer",strContainer)
+        }else{
+            strContainer.push(str)
+        }
+    })
+    console.log("final",strContainer)
+    return strContainer.length
+};
 
-console.log(accountTag);
+console.log(lengthOfLongestSubstring(s))

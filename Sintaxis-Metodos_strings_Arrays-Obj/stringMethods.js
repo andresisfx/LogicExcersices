@@ -424,3 +424,4 @@ console.log(generarLinea("*", 50)); // "*****"
 console.log(generarLinea("A", 35)); // "AAA"
 
 
+//Daniela está viendo este cambio
